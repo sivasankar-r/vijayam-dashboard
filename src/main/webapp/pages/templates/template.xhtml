@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Mitra</title>
+</h:head>
+
+
+<f:view>
+	<h:body>
+		<h:outputScript name="mitra.js" library="js" target="head" />
+		<h:outputStylesheet name="mitra.css" library="css" target="head" />
+		<h:outputStylesheet name="main.css" library="css" target="head" />
+		<div id="header_container">
+		<div id="header">
+			<h:form>
+				<div class="nav">
+					<ul>
+						<li class="brand active"><a href="#">Mitra</a></li>
+						<li><h:commandLink value="All Exams"
+								action="#{examsMBean.loadExams}" /></li>
+						<li><h:commandLink value="Create Exam"
+								action="fileUpload" /></li>								
+						<li><a href="#about">About</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ul>
+				</div>
+			</h:form>
+		</div>
+	</div>
+
+		<div id="content" align="center">
+			<ui:insert name="content">
+
+			</ui:insert>
+		</div>
+
+		<div id="footer_container">
+		<div id="footer">
+			<center>
+					Designed &amp; Developed By <a href="http://kanchutechnologies.com/">Kanchu Technologies</a>
+			</center>
+			<!--<div id="about">
+				
+				<h3>About Us</h3>
+				<p> Section yet to be Updated</p>
+				<ul>
+					<li><a href="#">Contact Us</a></li>
+				</ul>
+			</div>
+			 <div id="otherActivities">
+				<h3>Other Activities</h3>
+				<ul>
+					<li><a href="#">Activity One</a></li>
+					<li><a href="#">Activity Two</a></li>
+					<li><a href="#">Activity Three</a></li>
+					<li><a href="#">Activity Four</a></li>
+					<li><a href="#">Activity Five</a></li>
+				</ul>
+			</div>
+			<div id="blog">
+				<h3>Blog</h3>
+				<ul>
+					<li><a href="#">Blog Title</a></li>
+					<li><a href="#">Blog Title</a></li>
+					<li><a href="#">Blog Title</a></li>
+					<li><a href="#">Blog Title</a></li>
+				</ul>
+			</div> -->
+		</div>
+		</div>
+	</h:body>
+</f:view>
+
+</html>

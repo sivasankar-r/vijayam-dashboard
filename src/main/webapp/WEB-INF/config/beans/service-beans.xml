@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="examService" class="com.kanchutech.mitra.service.ExamService" scope="singleton">
+		<property name="examDao" ref="examDao"/>
+		<property name="questionDao" ref="questionDao"/>
+	</bean>
+	
+	<bean id="examQuestionService" class="com.kanchutech.mitra.service.ExamQuestionService" scope="singleton">
+		<property name="examQuestionDao" ref="examQuestionDao"/>
+	</bean>
+	
+	<bean id="questionService" class="com.kanchutech.mitra.service.QuestionService" scope="singleton">
+		<property name="questionDao" ref="questionDao"/>
+		<property name="optionDao" ref="optionDao"/>
+	</bean>
+	
+	<bean id="fileUploadService" class="com.kanchutech.mitra.service.FileUploadService" scope="singleton">
+		<property name="questionService" ref="questionService"/>
+		<property name="examService" ref="examService"/>
+		<property name="examQuestionService" ref="examQuestionService"/>
+	</bean>
+	
+	<bean id="loginService" class="com.kanchutech.mitra.service.LoginService" scope="singleton">
+		<property name="loginDao" ref="loginDao"/>
+	</bean>
+</beans>

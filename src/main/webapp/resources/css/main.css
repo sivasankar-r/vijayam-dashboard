@@ -1,0 +1,137 @@
+div#content {
+	padding: 60px;
+}
+
+#header_container {
+	background: #eee;
+	border: 1px solid #666;
+	height: 50px;
+	left: 0;
+	position: fixed;
+	width: 100%;
+	top: 0;
+}
+
+#header {
+	line-height: 60px;
+	margin: 0 auto;
+	width: 940px;
+	text-align: center;
+}
+
+#footer_container {
+	background: #eee;
+	border: 1px solid #666;
+	bottom: 0;
+	height: 40px;
+	left: 0;
+	position: fixed;
+	width: 100%;
+}
+
+#footer {
+	background: #222;
+	line-height: 40px;
+	margin: 0 auto;
+	width: 100%;
+	text-align: center;
+}
+
+/*------------------------------
+=NAVIGATION
+------------------------------*/
+.nav {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	background: #222;
+	/* background-image: url("#{resource['img/nav_background.png']}"); */
+}
+
+.nav ul li.brand a {
+	font-family: magneto;
+	font-size: 30px;
+}
+
+.nav ul {
+	margin: 0 auto;
+	list-style: none;
+}
+
+.nav ul li {
+	float: left;
+}
+
+.nav ul li a {
+	display: block;
+	margin-right: 20px;
+	width: 140px;
+	font-size: 14px;
+	line-height: 50px;
+	text-align: center;
+	text-decoration: none;
+	color: #777;
+}
+
+.nav ul li a:hover {
+	color: #fff;
+}
+
+.nav ul li.selected a {
+	color: #fff;
+}
+
+.nav ul li.brand a {
+	margin-left: 22px;
+	padding-left: 33px;
+	text-align: center;
+	background-image: url("#{resource['img/ic_launcher.png']}");
+	background-repeat: no-repeat;
+	background-position: left;
+}
+
+
+
+#footer div {
+	margin: 0 auto;
+	padding: 11px 0;
+	color: #777;
+	display: table-cell;
+	width: 300px;
+}
+
+#footer div#about,footer div#otherActivities {
+	padding-right: 20px;
+}
+
+#footer h3 {
+	color: #FFF;
+}
+
+#footer a {
+	color: #999;
+	text-decoration: none;
+}
+
+#footer a:hover {
+	color: #FFF;
+	text-decoration: underline;
+}
+
+#footer ul {
+	margin: 0 0 0 40px;
+	list-style: square;
+	color: #565656;
+}
+
+#footer ul li a {
+	display: block;
+}
+
+#footer center {
+	color: #777;
+}
+
+#footer center a {
+	font-size: 15px;
+}

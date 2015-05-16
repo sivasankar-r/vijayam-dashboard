@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich">
+
+<ui:composition template="/pages/templates/template.xhtml">
+	<ui:define name="content">
+	    <h:form id="availableExamsForm">
+	    	<div style="padding:20px">
+		    	<rich:dataTable id="examsTable" var="exam" value="#{examsMBean.examList}" rowKeyVar="rowKey" selectionMode="single" rows="10">
+			        <f:facet name="header">
+			            <rich:columnGroup>
+			                <rich:column colspan="6">
+			                    <h:outputText value="All Exams" />
+			                </rich:column>
+			                <rich:column breakRowBefore="true">
+			                    <h:outputText value="S.No" />
+			                </rich:column>
+			                <rich:column>
+			                    <h:outputText value="Exam ID" />
+			                </rich:column>
+			                <rich:column>
+			                    <h:outputText value="Title" />
+			                </rich:column>
+			                <rich:column>
+			                    <h:outputText value="Description" />
+			                </rich:column>
+			                <rich:column>
+			                    <h:outputText value="No. of Questions" />
+			                </rich:column>
+			                <rich:column>
+			                    <h:outputText value="Duration" />
+			                </rich:column>
+			            </rich:columnGroup>
+			        </f:facet>
+			        <rich:column>
+			        	<h:outputText value="#{rowKey+1}"/>
+			        </rich:column>
+			        <rich:column>
+		                <h:commandLink id="examIdLink" value="#{exam.examId}" action="#{questionController.loadExamQuestions}">
+		                	<f:param name="examId" value="#{exam.examId}"/>
+		                </h:commandLink>
+		            </rich:column>
+		            <rich:column>
+		                <h:outputText value="#{exam.title}"/>
+		            </rich:column>
+		            <rich:column>
+		                <h:outputText value="#{exam.description}"/>
+		            </rich:column>
+		             <rich:column>
+		                <h:outputText value="#{exam.questionCount}"/>
+		            </rich:column>
+		            <rich:column>
+		                <h:outputText value="#{exam.duration}"/>
+		            </rich:column>
+		            
+		            <f:facet name="footer">
+						<rich:dataScroller id="ds" for="examsTable" maxPages="10">
+					</rich:dataScroller>
+				</f:facet>
+	        	</rich:dataTable>
+	        </div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

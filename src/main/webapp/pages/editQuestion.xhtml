@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<ui:composition template="/pages/templates/template.xhtml">
+	<ui:define name="content">
+		<h:form id="editForm">
+		
+			<center>
+				<h:outputText
+					value="Edit Question ID : #{questionEditMBean.selQuestion.questionId}" />
+				<h:panelGrid id="panel" columns="2" border="0" cellpadding="5"
+					cellspacing="5">
+
+					<h:outputText value="Question" />
+					<h:panelGroup>
+						<h:inputTextarea id="editContent"
+							value="#{questionEditMBean.selQuestion.content}" required="true"
+							validatorMessage="Length cannot exceed 1000 characters"
+							requiredMessage="Cannot be Empty" cols="100" rows="5">
+							<f:validateLength maximum="1000" minimum="1" />
+						</h:inputTextarea>
+						<h:message for="editContent" styleClass="errorMsg" />
+					</h:panelGroup>
+
+					<h:outputText value="Question Type" />
+					<h:panelGroup>
+						<h:selectOneMenu required="true"
+							value="#{questionEditMBean.selQuestion.type}">
+							<f:selectItem itemValue="1" itemLabel="Multiple Choice" />
+							<f:selectItem itemValue="2" itemLabel="Multiple Response" />
+							<f:selectItem itemValue="3" itemLabel="True/False" />
+							<f:selectItem itemValue="4" itemLabel="Fill in the Blank" />
+						</h:selectOneMenu>
+					</h:panelGroup>
+
+					<h:outputText value="Points" />
+					<h:panelGroup>
+						<h:selectOneMenu id="points"
+							value="#{questionEditMBean.selQuestion.points}">
+							<f:selectItem itemLabel="1" itemValue="1" />
+							<f:selectItem itemLabel="2" itemValue="2" />
+							<f:selectItem itemLabel="3" itemValue="3" />
+							<f:selectItem itemLabel="4" itemValue="4" />
+							<f:selectItem itemLabel="5" itemValue="5" />
+							<f:selectItem itemLabel="6" itemValue="6" />
+							<f:selectItem itemLabel="7" itemValue="7" />
+							<f:selectItem itemLabel="8" itemValue="8" />
+							<f:selectItem itemLabel="9" itemValue="9" />
+							<f:selectItem itemLabel="10" itemValue="10" />
+						</h:selectOneMenu>
+					</h:panelGroup>
+
+					<h:outputText value="Options" />
+
+					<h:selectOneRadio id="optionsRadio" required="true"
+						requiredMessage="Select an Option"
+						value="#{questionEditMBean.optionSelected}">
+						<f:converter converterId="optionConverter"/>
+						<f:selectItems value="#{questionEditMBean.selQuestion.optionList}"
+							var="option" itemValue="#{option}" itemLabel="#{option.content}" />
+						
+					</h:selectOneRadio>
+
+					<h:outputText value="Delete Options"/>
+					<h:panelGroup id="optionsSection">
+						<h:dataTable id="optionsTable"
+							value="#{questionEditMBean.selQuestion.optionList}" var="option">
+							<h:column>
+								<h:outputText id="option_content1" cols="50" rows="1"
+									value="#{option.content}"/>
+							</h:column>
+							<h:column>
+								<a4j:commandButton id="removeBtn"
+										action="#{questionEditController.removeOption}" immediate="true"
+										image="/resources/img/delete.gif" value="Remove Option"
+										render="optionsSection,optionsRadio" style="float:right;"
+										title="Remove">
+										<f:setPropertyActionListener
+											target="#{questionEditMBean.optionToRemove}"
+											value="#{option}" />
+									</a4j:commandButton>
+							</h:column>
+						</h:dataTable>
+					</h:panelGroup>
+
+					<h:outputText value="Add Option" />
+					<h:panelGroup style="display:block;">
+						<h:inputText id="newOptionText"
+							value="#{questionEditMBean.newOptionText}" />
+						<h:commandButton id="addBtn" value="Add Option">
+							<f:ajax listener="#{questionEditController.addOption}"
+								render="optionsSection optionsRadio" execute="newOptionText" />
+						</h:commandButton>
+					</h:panelGroup>
+
+					<h:panelGroup style="display:block; text-align:center">
+						<h:commandButton id="submit" value="Update"
+							action="#{questionEditController.updateQuestion}" />
+					</h:panelGroup>
+
+				</h:panelGrid>
+			</center>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
