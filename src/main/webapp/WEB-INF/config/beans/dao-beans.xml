@@ -6,15 +6,15 @@
 
 	<!-- <bean id="appDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://localhost:3306/mitra"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/vijayam"/>
 		<property name="username" value="root"/>
 	</bean> -->
 	
 	<bean id="appDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://127.11.37.2:3306/mitra"/>
-		<property name="username" value="admin7478AvK"/>
-		<property name="password" value="XI4PlCpwT1Sw"/>
+		<property name="url" value="jdbc:mysql://ec2-52-25-72-42.us-west-2.compute.amazonaws.com:3306/vijayam"/>
+		<property name="username" value="vijayam"/>
+		<property name="password" value="1Mn@2016"/>
 	</bean>
 	
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
